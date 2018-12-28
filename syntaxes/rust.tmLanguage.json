@@ -74,6 +74,27 @@
       "include": "#line_comment"
     },
     {
+      "comment": "Function Parameters",
+      "name": "meta.parameters.rust",
+      "begin": "\\(",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.parameters.begin.rust"
+        }
+      },
+      "end": "\\)",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.parameters.end.rust"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#function_parameters"
+        }
+      ]
+    },
+    {
       "comment": "Attribute",
       "name": "meta.attribute.rust",
       "begin": "#\\!?\\[",
