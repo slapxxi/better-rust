@@ -848,6 +848,10 @@
       "name": "support.other.macro.rust",
       "match": "\\b\\w+\\s*!(?=\\s*[\\[({])"
     },
+    "function-invocations": {
+      "name": "meta.function-call",
+      "match": "\\b\\w+\\s*(?=\\s*[\\[({])"
+    },
     "markdown-inline": {
       "patterns": [
         {
@@ -1587,6 +1591,9 @@
     },
     {
       "include": "#macro-invocations"
+    },
+    {
+      "include": "#function-invocations"
     },
     {
       "include": "#common"
