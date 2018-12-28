@@ -1,0 +1,32 @@
+{
+  "name": "Better Rust",
+  "displayName": "%displayName%",
+  "description": "%description%",
+  "version": "0.0.1",
+  "publisher": "vscode",
+  "engines": {
+    "vscode": "*"
+  },
+  "contributes": {
+    "languages": [
+      {
+        "id": "betterrust",
+        "extensions": [
+          ".rs"
+        ],
+        "aliases": [
+          "Better Rust",
+          "better rust"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "rust",
+        "path": "./syntaxes/rust.tmLanguage.json",
+        "scopeName": "source.rust"
+      }
+    ]
+  }
+}
