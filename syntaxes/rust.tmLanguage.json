@@ -2,6 +2,10 @@
   "name": "Better Rust",
   "scopeName": "source.rust",
   "repository": {
+    "accessors": {
+      "name": "support.module.builtin.rust",
+      "match": "(\\w+)(?=::)"
+    },
     "attributes": {
       "patterns": [
         {
@@ -16,12 +20,7 @@
               "comment": "attribute literal",
               "name": "string.quoted.double.rust",
               "begin": "\"",
-              "end": "(?<!\\\\)\"",
-              "patterns": [
-                {
-                  "include": "#comments"
-                }
-              ]
+              "end": "(?<!\\\\)\""
             }
           ]
         }
@@ -483,6 +482,31 @@
       "name": "keyword.control.rust",
       "match": "\\b(?:for|loop|while|break|continue|if|else|in|return|try)\\b"
     },
+    "modules": {
+      "name": "meta.module.rust",
+      "begin": "\\b(mod)\\b",
+      "beginCaptures": {
+        "1": { "name": "storage.type.rust" }
+      },
+      "end": "(?=\\s*[{;,})])",
+      "patterns": [
+        {
+          "include": "#comments"
+        },
+        {
+          "include": "#metavariables"
+        },
+        {
+          "begin": "\\b(\\w+)(?=\\s*[<({])",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.name.module.rust"
+            }
+          },
+          "end": "(?=\\s*[{;,}])"
+        }
+      ]
+    },
     "functions": {
       "name": "meta.function.rust",
       "begin": "\\b(fn)\\b",
@@ -850,7 +874,7 @@
     },
     "function-invocations": {
       "name": "meta.function-call",
-      "match": "\\b\\w+\\s*(?=\\s*[\\[({])"
+      "match": "\\b\\w+(?=(?:\\<.+\\>)?\\()"
     },
     "markdown-inline": {
       "patterns": [
@@ -1563,6 +1587,9 @@
       "include": "#functions"
     },
     {
+      "include": "#modules"
+    },
+    {
       "include": "#implementations"
     },
     {
@@ -1597,6 +1624,9 @@
     },
     {
       "include": "#common"
+    },
+    {
+      "include": "#accessors"
     }
   ]
 }
