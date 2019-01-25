@@ -2,6 +2,29 @@
   "name": "Better Rust",
   "scopeName": "source.rust",
   "repository": {
+    "structure": {
+      "name": "entity.structure.rust",
+      "begin": "([A-Z][A-Za-z]*)(?=\\s*{)",
+      "beginCaptures": {
+        "1": { "name": "entity.name.structure.rust" }
+      },
+      "end": "(?=})",
+      "patterns": [
+        { "include": "#literals" },
+        { "include": "#comments" },
+        { "include": "#symbols" },
+        { "include": "#function-invocations" },
+        { "include": "#accessors" },
+        { "include": "#operators" },
+        { "include": "#keyword-self" },
+        { "include": "#structure" },
+        { "name": "support.type.property-name.rust", "match": "\\S+(?=:)" }
+      ]
+    },
+    "type-alias": {
+      "name": "entity.name.type.alias.rust",
+      "match": "(?!type)\\s+([A-Z][a-z]*)(?=<?\\S*>?\\s*=)"
+    },
     "accessors": {
       "name": "support.module.builtin.rust",
       "match": "(\\w+)(?=::)"
@@ -1553,6 +1576,12 @@
     }
   },
   "patterns": [
+    {
+      "include": "#structure"
+    },
+    {
+      "include": "#type-alias"
+    },
     {
       "include": "#comments"
     },
